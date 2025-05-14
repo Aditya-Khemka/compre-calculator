@@ -1,440 +1,475 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Course Score Calculator</title>
-  <style>
-    :root {
-      --primary-color: #3b82f6;
-      --primary-dark: #2563eb;
-      --accent-color: #10b981;
-      --danger-color: #ef4444;
-      --border-radius: 8px;
-      --box-shadow: 0 4px 6px rgba(0,0,0,0.1), 0 1px 3px rgba(0,0,0,0.08);
-    }
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Course Score Calculator</title>
+    <style>
+        :root {
+            --primary-color: #3b82f6;
+            --primary-dark: #2563eb;
+            --accent-color: #10b981;
+            --danger-color: #ef4444;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 6px rgba(0,0,0,0.1), 0 1px 3px rgba(0,0,0,0.08);
+        }
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: #f3f4f6;
-  padding: 20px;
-  line-height: 1.5;
-  color: #1f2937;
-}
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f3f4f6;
+            padding: 20px;
+            line-height: 1.5;
+            color: #1f2937;
+        }
 
-.container {
-  max-width: 800px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
 
-.card {
-  background: white;
-  padding: 30px;
-  border-radius: var(--border-radius);
-  box-shadow: var(--box-shadow);
-}
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
 
-h1, h2, h3 {
-  color: #111827;
-}
+        h1, h2, h3 {
+            color: #111827;
+        }
 
-h1 {
-  text-align: center;
-  margin-bottom: 5px;
-  font-size: 28px;
-}
+        h1 {
+            text-align: center;
+            margin-bottom: 5px;
+            font-size: 28px;
+        }
 
-.subtitle {
-  text-align: center;
-  margin-bottom: 20px;
-  color: #6b7280;
-  font-size: 14px;
-}
+        .subtitle {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #6b7280;
+            font-size: 14px;
+        }
 
-.form-group {
-  margin-bottom: 15px;
-}
+        .form-group {
+            margin-bottom: 15px;
+        }
 
-label {
-  display: block;
-  margin-bottom: 5px;
-  font-weight: 600;
-  font-size: 14px;
-}
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            font-size: 14px;
+        }
 
-input {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #d1d5db;
-  border-radius: var(--border-radius);
-  font-size: 16px;
-  transition: border-color 0.2s;
-}
+        input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #d1d5db;
+            border-radius: var(--border-radius);
+            font-size: 16px;
+            transition: border-color 0.2s;
+        }
 
-input:focus {
-  outline: none;
-  border-color: var(--primary-color);
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25);
-}
+        input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25);
+        }
 
-.input-group {
-  display: flex;
-  gap: 15px;
-}
+        .input-group {
+            display: flex;
+            gap: 15px;
+        }
 
-.input-group .form-group {
-  flex: 1;
-}
+        .input-group .form-group {
+            flex: 1;
+        }
 
-button {
-  width: 100%;
-  background-color: var(--primary-color);
-  color: white;
-  border: none;
-  padding: 12px;
-  font-size: 16px;
-  font-weight: 600;
-  border-radius: var(--border-radius);
-  cursor: pointer;
-  transition: background-color 0.2s, transform 0.1s;
-  margin-top: 10px;
-}
+        button {
+            width: 100%;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: background-color 0.2s, transform 0.1s;
+            margin-top: 10px;
+        }
 
-button:hover {
-  background-color: var(--primary-dark);
-}
+        button:hover {
+            background-color: var(--primary-dark);
+        }
 
-button:active {
-  transform: translateY(1px);
-}
+        button:active {
+            transform: translateY(1px);
+        }
 
-.results {
-  margin-top: 20px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-}
+        .results {
+            margin-top: 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
 
-.result-card {
-  padding: 20px;
-  border-radius: var(--border-radius);
-  border: 1px solid #e5e7eb;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-  transition: transform 0.3s, box-shadow 0.3s;
-}
+        .result-card {
+            padding: 20px;
+            border-radius: var(--border-radius);
+            border: 1px solid #e5e7eb;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
 
-.result-card:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--box-shadow);
-}
+        .result-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--box-shadow);
+        }
 
-.result-card h3 {
-  margin-bottom: 15px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid #e5e7eb;
-  font-size: 18px;
-}
+        .result-card h3 {
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #e5e7eb;
+            font-size: 18px;
+        }
 
-.result-item {
-  display: flex;
-  justify-content: space-between;
-  padding: 6px 0;
-  font-size: 14px;
-}
+        .result-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 6px 0;
+            font-size: 14px;
+        }
 
-.result-value {
-  font-weight: 600;
-}
+        .result-value {
+            font-weight: 600;
+        }
 
-.better-option {
-  border-color: var(--accent-color);
-  background-color: rgba(16, 185, 129, 0.05);
-}
+        .better-option {
+            border-color: var(--accent-color);
+            background-color: rgba(16, 185, 129, 0.05);
+        }
 
-.better-option h3 {
-  color: var(--accent-color);
-}
+        .better-option h3 {
+            color: var(--accent-color);
+        }
 
-.recommendation {
-  margin-top: 20px;
-  padding: 15px;
-  background-color: #f8fafc;
-  border-radius: var(--border-radius);
-  font-size: 15px;
-  border-left: 4px solid var(--accent-color);
-}
+        .recommendation {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f8fafc;
+            border-radius: var(--border-radius);
+            font-size: 15px;
+            border-left: 4px solid var(--accent-color);
+        }
 
-.final-score {
-  font-size: 20px;
-  font-weight: bold;
-  padding: 10px 0;
-  color: var(--primary-dark);
-}
+        .final-score {
+            font-size: 20px;
+            font-weight: bold;
+            padding: 10px 0;
+            color: var(--primary-dark);
+        }
 
-.hint {
-  font-size: 12px;
-  color: #6b7280;
-  margin-top: 3px;
-}
+        .hint {
+            font-size: 12px;
+            color: #6b7280;
+            margin-top: 3px;
+        }
 
-@media (max-width: 768px) {
-  .results {
-    grid-template-columns: 1fr;
-  }
-  
-  .input-group {
-    flex-direction: column;
-    gap: 0;
-  }
-}
+        .warning-note {
+            color: #e65100; /* Orange color for warning */
+            font-size: 0.9em;
+            font-style: italic;
+        }
 
-  </style>
+        @media (max-width: 768px) {
+            .results {
+                grid-template-columns: 1fr;
+            }
+
+            .input-group {
+                flex-direction: column;
+                gap: 0;
+            }
+        }
+
+    </style>
 </head>
 <body>
-  <div class="container">
-    <div class="card">
-      <h1>Course Marks Calculator</h1>
-      <p class="subtitle">Compare PCT scaling vs. taking the Compres</p>
-  <div class="form-group">
-    <label for="totalMarks">Total Course Marks</label>
-    <input type="number" id="totalMarks" placeholder="e.g. 200" />
-  </div>
-  
-  <div class="input-group">
-    <div class="form-group">
-      <label for="compreWeight">Comprehensive Exam Weightage (%)</label>
-      <input type="number" id="compreWeight" placeholder="e.g. 35" />
-    </div>
-    
-    <div class="form-group">
-      <label for="compreAvg">Compre Av Marks (optional)</label>
-      <input type="number" id="compreAvg" placeholder="e.g. 28" />
-    </div>
-  </div>
-  
-  <div class="input-group">
-    <div class="form-group">
-      <label for="yourPCT">Your PCT Marks</label>
-      <input type="number" id="yourPCT" placeholder="e.g. 95.2" />
-    </div>
-    
-    <div class="form-group">
-      <label for="classPCT">PCT Average</label>
-      <input type="number" id="classPCT" placeholder="e.g. 61.7" />
-    </div>
-  </div>
-  
-  <div class="input-group">
-    <div class="form-group">
-      <label for="compreMarks">Your compre marks (optional)</label>
-      <input type="number" id="compreMarks" placeholder="e.g. 42" />
-    </div>
-    
-    <div class="form-group">
-      <label for="compreTotal">Compre total (out of)</label>
-      <input type="number" id="compreTotal" placeholder="e.g. 70" />
-    </div>
-  </div>
-  
-  <button onclick="calculateScores()">Calculate Options</button>
-  
-  <div id="results" class="results" style="display: none;">
-    <div id="scalingResult" class="result-card">
-      <h3>Option 1: PCT Scaling Only</h3>
-      <div id="scalingDetails"></div>
-    </div>
-    
-    <div id="examResult" class="result-card">
-      <h3>Option 2: With Comprehensive Exam</h3>
-      <div id="examDetails"></div>
-    </div>
-  </div>
-  
-  <div id="recommendation" class="recommendation" style="display: none;"></div>
-</div>
+    <div class="container">
+        <div class="card">
+            <h1>Course Marks Calculator</h1>
+            <p class="subtitle">Compare PCT scaling vs. taking the Compres</p>
+            <div class="form-group">
+                <label for="totalMarks">Total Course Marks</label>
+                <input type="number" id="totalMarks" placeholder="e.g. 200" />
+            </div>
 
-  </div>
+            <div class="input-group">
+                <div class="form-group">
+                    <label for="compreWeight">Comprehensive Exam Weightage (%)</label>
+                    <input type="number" id="compreWeight" placeholder="e.g. 35" />
+                </div>
 
-  <script>
-    function calculateScores() {
-      // Get all input values
-      const totalMarks = parseFloat(document.getElementById("totalMarks").value);
-      const compreWeight = parseFloat(document.getElementById("compreWeight").value);
-      const yourPCT = parseFloat(document.getElementById("yourPCT").value);
-      const classPCT = parseFloat(document.getElementById("classPCT").value);
-      const compreMarks = parseFloat(document.getElementById("compreMarks").value);
-      const compreTotal = parseFloat(document.getElementById("compreTotal").value);
-      const compreAvg = parseFloat(document.getElementById("compreAvg").value);
-      
-      // Check if required fields are filled
-      if (isNaN(totalMarks) || isNaN(compreWeight) || isNaN(yourPCT) || isNaN(classPCT)) {
-        alert("Please fill in all required fields.");
-        return;
-      }
-      
-      // Calculate PCT weightage
-      const pctWeight = 100 - compreWeight;
-      const pctTotalMarks = (pctWeight / 100) * totalMarks;
-      
-      // Calculate Option 1: PCT Scaling
-      const pctScaledScore = (yourPCT / pctTotalMarks) * totalMarks;
-      const classScaledScore = (classPCT / pctTotalMarks) * totalMarks;
-      const pctScorePercent = (pctScaledScore / totalMarks) * 100;
-      const diffFromAverage = pctScaledScore - classScaledScore;
-      const relativeGain1 = diffFromAverage; // This is the relative gain (how much above average)
-      
-      // Display scaling results
-      let scalingDetails = `
-        <div class="result-item">
-          <span>PCT contribution:</span>
-          <span class="result-value">${pctWeight}% (out of ${pctTotalMarks.toFixed(2)})</span>
+                <div class="form-group">
+                    <label for="compreAvg">Compre Av Marks (optional)</label>
+                    <input type="number" id="compreAvg" placeholder="e.g. 28" />
+                </div>
+            </div>
+
+            <div class="input-group">
+                <div class="form-group">
+                    <label for="yourPCT">Your PCT Marks</label>
+                    <input type="number" id="yourPCT" placeholder="e.g. 95.2" />
+                </div>
+
+                <div class="form-group">
+                    <label for="classPCT">PCT Average</label>
+                    <input type="number" id="classPCT" placeholder="e.g. 61.7" />
+                </div>
+            </div>
+
+            <div class="input-group">
+                <div class="form-group">
+                    <label for="compreMarks">Your compre marks (optional)</label>
+                    <input type="number" id="compreMarks" placeholder="e.g. 42" />
+                </div>
+
+                <div class="form-group">
+                    <label for="compreTotal">Compre total (out of)</label>
+                    <input type="number" id="compreTotal" placeholder="e.g. 70" />
+                </div>
+            </div>
+
+            <button onclick="calculateScores()">Calculate Options</button>
+
+            <div id="results" class="results" style="display: none;">
+                <div id="scalingResult" class="result-card">
+                    <h3>Option 1: PCT Scaling Only</h3>
+                    <div id="scalingDetails"></div>
+                </div>
+
+                <div id="examResult" class="result-card">
+                    <h3>Option 2: With Comprehensive Exam</h3>
+                    <div id="examDetails"></div>
+                </div>
+            </div>
+
+            <div id="recommendation" class="recommendation" style="display: none;"></div>
         </div>
-        <div class="result-item">
-          <span>PCT marks (scaled):</span>
-          <span class="result-value">${pctScaledScore.toFixed(2)} (${((yourPCT / pctTotalMarks) * 100).toFixed(2)}%)</span>
-        </div>
-        <div class="result-item">
-          <span>PCT average:</span>
-          <span class="result-value">${classScaledScore.toFixed(2)} (${((classPCT / pctTotalMarks) * 100).toFixed(2)}%)</span>
-        </div>
-        <div class="result-item">
-          <span>Final score:</span>
-          <span class="result-value">${pctScaledScore.toFixed(2)} (${pctScorePercent.toFixed(0)}%)</span>
-        </div>
-        <div class="final-score">Overall you're av+ ${diffFromAverage.toFixed(1)}</div>
-      `;
-      
-      document.getElementById("scalingDetails").innerHTML = scalingDetails;
-      
-      // Calculate Option 2: With Comprehensive Exam (if available)
-      let weightedScore = 0;
-      let examDetails = "";
-      let relativeGain2 = 0;
-      
-      const hasExamData = !isNaN(compreMarks) && !isNaN(compreTotal) && compreTotal > 0;
-      const hasCompreAvg = !isNaN(compreAvg);
-      
-      if (hasExamData) {
-        // Calculate PCT contribution in original scale
-        const pctContribution = (yourPCT / pctTotalMarks) * pctWeight;
-        
-        // Calculate exam contribution in percentage
-        const examContribution = (compreMarks / compreTotal) * compreWeight;
-        
-        // Calculate weighted total on 100-point scale then convert to total marks
-        const weightedScorePercent = pctContribution + examContribution;
-        weightedScore = (weightedScorePercent / 100) * totalMarks;
-        
-        // Calculate class average (if comprehensive average is provided)
-        let totalAverage = 0;
-        let diffFromTotalAvg = 0;
-        
-        if (hasCompreAvg) {
-          // Calculate PCT average contribution
-          const pctAvgContribution = (classPCT / pctTotalMarks) * pctWeight;
-          
-          // Calculate comprehensive exam average contribution
-          const compreAvgContribution = (compreAvg / compreTotal) * compreWeight;
-          
-          // Calculate total class average on 100-point scale then convert to total marks
-          const totalAveragePercent = pctAvgContribution + compreAvgContribution;
-          totalAverage = (totalAveragePercent / 100) * totalMarks;
-          
-          diffFromTotalAvg = weightedScore - totalAverage;
-          relativeGain2 = diffFromTotalAvg; // This is the relative gain (how much above average)
+
+    </div>
+
+    <script>
+        function calculateScores() {
+            // Get all input values
+            const totalMarks = parseFloat(document.getElementById("totalMarks").value);
+            const compreWeight = parseFloat(document.getElementById("compreWeight").value);
+            const yourPCT = parseFloat(document.getElementById("yourPCT").value);
+            const classPCT = parseFloat(document.getElementById("classPCT").value);
+            const compreMarks = parseFloat(document.getElementById("compreMarks").value);
+            const compreTotal = parseFloat(document.getElementById("compreTotal").value);
+            const compreAvg = parseFloat(document.getElementById("compreAvg").value);
+
+            // Check if required fields are filled
+            if (isNaN(totalMarks) || isNaN(compreWeight) || isNaN(yourPCT) || isNaN(classPCT)) {
+                alert("Please fill in all required fields.");
+                return;
+            }
+
+            // Calculate PCT weightage
+            const pctWeight = 100 - compreWeight;
+            const pctTotalMarks = (pctWeight / 100) * totalMarks;
+
+            // Calculate Option 1: PCT Scaling
+            const pctScaledScore = (yourPCT / pctTotalMarks) * totalMarks;
+            const classScaledScore = (classPCT / pctTotalMarks) * totalMarks;
+            const pctScorePercent = (pctScaledScore / totalMarks) * 100;
+            const diffFromAverage1 = pctScaledScore - classScaledScore; // Changed variable name for clarity
+            const option1Score = classScaledScore; // Changed to classScaledScore
+
+            // Display scaling results
+            let scalingDetails = `
+                <div class="result-item">
+                    <span>PCT contribution:</span>
+                    <span class="result-value">${pctWeight}% (out of ${pctTotalMarks.toFixed(2)})</span>
+                </div>
+                <div class="result-item">
+                    <span>PCT marks (scaled):</span>
+                    <span class="result-value">${pctScaledScore.toFixed(2)} (${((yourPCT / pctTotalMarks) * 100).toFixed(2)}%)</span>
+                </div>
+                <div class="result-item">
+                    <span>PCT average:</span>
+                    <span class="result-value">${classScaledScore.toFixed(2)} (${((classPCT / pctTotalMarks) * 100).toFixed(2)}%)</span>
+                </div>
+                <div class="result-item">
+                    <span>Final score:</span>
+                    <span class="result-value">${pctScaledScore.toFixed(2)} (${pctScorePercent.toFixed(0)}%)</span>
+                </div>
+                <div class="final-score">Overall you're av+ ${diffFromAverage1.toFixed(1)}</div>
+            `;
+
+            document.getElementById("scalingDetails").innerHTML = scalingDetails;
+
+            // Calculate Option 2: With Comprehensive Exam (if available)
+            let weightedScore = 0;
+            let examDetails = "";
+            let diffFromAverage2 = 0; // Changed variable name for clarity
+            let option2Score = 0;
+
+            const hasExamData = !isNaN(compreMarks) && !isNaN(compreTotal) && compreTotal > 0;
+            const hasCompreAvg = !isNaN(compreAvg);
+
+            if (hasExamData) {
+                // Calculate PCT contribution in original scale
+                const pctContribution = (yourPCT / pctTotalMarks) * pctWeight;
+
+                // Calculate exam contribution in percentage
+                const examContribution = (compreMarks / compreTotal) * compreWeight;
+
+                // Calculate weighted total on 100-point scale then convert to total marks
+                const weightedScorePercent = pctContribution + examContribution;
+                weightedScore = (weightedScorePercent / 100) * totalMarks;
+
+
+                // Calculate class average (if comprehensive average is provided)
+                let totalAverage = 0;
+
+                if (hasCompreAvg) {
+                    // Calculate PCT average contribution
+                    const pctAvgContribution = (classPCT / pctTotalMarks) * pctWeight;
+
+                    // Calculate comprehensive exam average contribution
+                    const compreAvgContribution = (compreAvg / compreTotal) * compreWeight;
+
+                    // Calculate total class average on 100-point scale then convert to total marks
+                    const totalAveragePercent = pctAvgContribution + compreAvgContribution;
+                    totalAverage = (totalAveragePercent / 100) * totalMarks;
+                    option2Score = totalAverage; // Changed to totalAverage
+
+                    diffFromAverage2 = weightedScore - totalAverage;
+                }
+
+                examDetails = `
+                    <div class="result-item">
+                        <span>PCT average:</span>
+                        <span class="result-value">${classPCT.toFixed(2)} out of ${pctTotalMarks.toFixed(2)}</span>
+                    </div>
+                    <div class="result-item">
+                        <span>Compre marks:</span>
+                        <span class="result-value">${compreMarks} out of ${compreTotal}</span>
+                    </div>`;
+
+                if (hasCompreAvg) {
+                    const totalScorePercent = (weightedScore / totalMarks) * 100;
+
+                    examDetails += `
+                        <div class="result-item">
+                            <span>Compre average:</span>
+                            <span class="result-value">${compreAvg} out of ${compreTotal}</span>
+                        </div>
+                        <div class="result-item">
+                            <span>Total average:</span>
+                            <span class="result-value">${totalAverage.toFixed(2)} out of ${totalMarks}</span>
+                        </div>
+                        <div class="result-item">
+                            <span>Your marks:</span>
+                            <span class="result-value">${weightedScore.toFixed(2)} out of ${totalMarks}</span>
+                        </div>
+                        <div class="result-item">
+                            <span>Final score:</span>
+                            <span class="result-value">${weightedScore.toFixed(2)} (${totalScorePercent.toFixed(0)}%)</span>
+                        </div>
+                        <div class="final-score">Overall you're av+ ${diffFromAverage2.toFixed(1)}</div>
+                        `;
+                } else {
+                    examDetails += `
+                        <div class="result-item">
+                            <span>Your marks:</span>
+                            <span class="result-value">${weightedScore.toFixed(2)} out of ${totalMarks}</span>
+                        </div>
+                        <div class="final-score">Final score: ${weightedScore.toFixed(2)}</div>
+                        <p class="hint">Enter Comprehensive Exam Average for complete comparison</p>
+                        `;
+                }
+            } else {
+                examDetails = `
+                    <p>Please provide comprehensive exam marks to calculate this option.</p>
+                `;
+            }
+
+            document.getElementById("examDetails").innerHTML = examDetails;
+            document.getElementById("results").style.display = "grid";
+
+            // Determine better option and show recommendation
+            if (hasExamData && hasCompreAvg) {
+                const scalingCard = document.getElementById("scalingResult");
+                const examCard = document.getElementById("examResult");
+                const recommendationDiv = document.getElementById("recommendation");
+
+                let recommendation = "";
+                let estimatedAverage = 0;
+
+                // Calculate estimated average
+                const maxAverage = Math.max(option1Score, option2Score);
+                const minAverage = Math.min(option1Score, option2Score);
+                estimatedAverage = maxAverage + 0.1 * minAverage;
+
+                const pctScore = pctScaledScore;
+                const examScore = weightedScore;
+
+                let bestRelativeOption = "";
+                let bestAbsoluteOption = "";
+
+                if (diffFromAverage1 > diffFromAverage2) {
+                    bestRelativeOption = "Option 1 (PCT Scaling)";
+                    scalingCard.classList.add("better-option");
+                    examCard.classList.remove("better-option");
+                } else if (diffFromAverage2 > diffFromAverage1) {
+                    bestRelativeOption = "Option 2 (With Comprehensive Exam)";
+                    examCard.classList.add("better-option");
+                    scalingCard.classList.remove("better-option");
+                } else {
+                    bestRelativeOption = "Both options";
+                    scalingCard.classList.remove("better-option");
+                    examCard.classList.remove("better-option");
+                }
+
+                if (pctScaledScore > weightedScore)
+                    bestAbsoluteOption = "Option 1 (PCT Scaling)";
+                else if (weightedScore > pctScaledScore)
+                    bestAbsoluteOption = "Option 2 (With Comprehensive Exam)";
+                else
+                    bestAbsoluteOption = "Both options";
+                
+
+                recommendation = `<strong>Recommendation:</strong>
+                    <br>
+                    Highest Relative Score: ${bestRelativeOption}
+                    <br>
+                    Highest Absolute Score: ${bestAbsoluteOption}
+                    <br>
+                    <span class="warning-note">
+                        <strong>Note:</strong> The estimated new average is ${estimatedAverage.toFixed(2)} . Consider this potentially inflated marks when making your decision. 
+                    </span>`;
+
+                recommendationDiv.innerHTML = recommendation;
+                recommendationDiv.style.display = "block";
+            } else {
+                document.getElementById("recommendation").style.display = "none";
+            }
         }
-        
-        examDetails = `
-          <div class="result-item">
-            <span>PCT average:</span>
-            <span class="result-value">${classPCT.toFixed(2)} out of ${pctTotalMarks.toFixed(2)}</span>
-          </div>
-          <div class="result-item">
-            <span>Compre marks:</span>
-            <span class="result-value">${compreMarks} out of ${compreTotal}</span>
-          </div>`;
-          
-        if (hasCompreAvg) {
-          const totalScorePercent = (weightedScore / totalMarks) * 100;
-          
-          examDetails += `
-          <div class="result-item">
-            <span>Compre average:</span>
-            <span class="result-value">${compreAvg} out of ${compreTotal}</span>
-          </div>
-          <div class="result-item">
-            <span>Total average:</span>
-            <span class="result-value">${totalAverage.toFixed(2)} out of ${totalMarks}</span>
-          </div>
-          <div class="result-item">
-            <span>Your marks:</span>
-            <span class="result-value">${weightedScore.toFixed(2)} out of ${totalMarks}</span>
-          </div>
-          <div class="result-item">
-            <span>Final score:</span>
-            <span class="result-value">${weightedScore.toFixed(2)} (${totalScorePercent.toFixed(0)}%)</span>
-          </div>
-          <div class="final-score">Overall you're av+ ${diffFromTotalAvg.toFixed(1)}</div>
-          `;
-        } else {
-          examDetails += `
-          <div class="result-item">
-            <span>Your marks:</span>
-            <span class="result-value">${weightedScore.toFixed(2)} out of ${totalMarks}</span>
-          </div>
-          <div class="final-score">Final score: ${weightedScore.toFixed(2)}</div>
-          <p class="hint">Enter Comprehensive Exam Average for complete comparison</p>
-          `;
-        }
-      } else {
-        examDetails = `
-          <p>Please provide comprehensive exam marks to calculate this option.</p>
-        `;
-      }
-      
-      document.getElementById("examDetails").innerHTML = examDetails;
-      document.getElementById("results").style.display = "grid";
-      
-      // Determine better option and show recommendation
-      if (hasExamData && hasCompreAvg) {
-        const scalingCard = document.getElementById("scalingResult");
-        const examCard = document.getElementById("examResult");
-        const recommendationDiv = document.getElementById("recommendation");
-        
-        let recommendation = "";
-        
-        // Compare relative gains (how much above average) instead of absolute scores
-        if (relativeGain1 > relativeGain2) {
-          scalingCard.classList.add("better-option");
-          examCard.classList.remove("better-option");
-          recommendation = `<strong>Recommendation:</strong> Option 1 (PCT Scaling) gives you a better relative score (av+ ${relativeGain1.toFixed(1)} vs av+ ${relativeGain2.toFixed(1)}).`;
-        } else if (relativeGain2 > relativeGain1) {
-          examCard.classList.add("better-option");
-          scalingCard.classList.remove("better-option");
-          recommendation = `<strong>Recommendation:</strong> Option 2 (With Comprehensive Exam) gives you a better relative score (av+ ${relativeGain2.toFixed(1)} vs av+ ${relativeGain1.toFixed(1)}).`;
-        } else {
-          scalingCard.classList.remove("better-option");
-          examCard.classList.remove("better-option");
-          recommendation = "<strong>Both options give you the same relative score above average.</strong>";
-        }
-        
-        recommendationDiv.innerHTML = recommendation;
-        recommendationDiv.style.display = "block";
-      } else {
-        document.getElementById("recommendation").style.display = "none";
-      }
-    }
-  </script>
+    </script>
 
 </body>
 </html>
